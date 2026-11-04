@@ -1,0 +1,180 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1440" viewBox="0 0 1200 1440">
+<rect width="100%" height="100%" fill="#fff"/>
+<line x1="190.0" y1="205.0" x2="190.0" y2="362.0" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="190.0,205.0 184.0,215.0 190.0,225.0 196.0,215.0" fill="#1f2937" stroke="#1f2937" stroke-width="1.3"/>
+<text x="179.0" y="231.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<text x="201.0" y="344.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..40</text>
+<line x1="295.7" y1="371.4" x2="434.5" y2="307.7" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="416.2,306.2 434.5,307.7 423.7,322.5" fill="#fff" stroke="#1f2937" stroke-width="1.3"/>
+<line x1="685.5" y1="206.1" x2="877.4" y2="138.9" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="685.5,206.1 696.9,208.4 704.4,199.5 693.0,197.1" fill="#fff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="709.9" y="213.2" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..*</text>
+<text x="853.0" y="139.8" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<line x1="685.5" y1="275.1" x2="801.5" y2="298.3" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="685.5,275.1 694.1,282.9 705.1,279.0 696.5,271.2" fill="#fff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="704.9" y="294.2" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..*</text>
+<text x="782.1" y="287.2" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<line x1="652.4" y1="317.0" x2="904.8" y2="500.0" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="738.3" y="399.5" width="80.6" height="16" fill="#fff" opacity="0.9"/>
+<text x="778.6" y="411.5" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#1f2937">traduz para</text>
+<text x="663.8" y="342.8" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..*</text>
+<text x="893.5" y="482.2" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..1</text>
+<line x1="560.0" y1="493.0" x2="560.0" y2="317.0" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="546.1" y="396.0" width="27.8" height="16" fill="#fff" opacity="0.9"/>
+<text x="560.0" y="408.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#1f2937">usa</text>
+<text x="571.0" y="475.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..*</text>
+<text x="549.0" y="343.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<line x1="682.2" y1="621.1" x2="862.0" y2="711.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="697.0" y="644.8" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<text x="847.2" y="695.3" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..1</text>
+<line x1="960.0" y1="580.0" x2="960.0" y2="711.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="949.0" y="606.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<text x="971.0" y="693.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..*</text>
+<line x1="508.4" y1="627.0" x2="234.7" y2="982.0" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="508.4,627.0 497.5,631.3 496.1,642.8 507.0,638.6" fill="#1f2937" stroke="#1f2937" stroke-width="1.3"/>
+<text x="486.2" y="641.7" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<text x="256.9" y="975.3" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<line x1="560.0" y1="1129.0" x2="560.0" y2="1265.0" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="569.0,1249.0 560.0,1265.0 551.0,1249.0" fill="#fff" stroke="#1f2937" stroke-width="1.3"/>
+<line x1="345.2" y1="1330.0" x2="411.4" y2="1330.0" stroke="#1f2937" stroke-width="1.3"/>
+<polygon points="395.4,1321.0 411.4,1330.0 395.4,1339.0" fill="#fff" stroke="#1f2937" stroke-width="1.3"/>
+<line x1="560.0" y1="627.0" x2="560.0" y2="1031.0" stroke="#1f2937" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="566.0,1019.0 560.0,1031.0 554.0,1019.0" fill="none" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="546.1" y="820.0" width="27.8" height="16" fill="#fff" opacity="0.9"/>
+<text x="560.0" y="832.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" font-style="italic" fill="#1f2937">usa</text>
+<line x1="322.1" y1="688.6" x2="437.8" y2="626.1" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="356.2" y="648.3" width="47.6" height="16" fill="#fff" opacity="0.9"/>
+<text x="380.0" y="660.3" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#1f2937">limita</text>
+<text x="346.7" y="691.8" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">1</text>
+<text x="413.2" y="630.8" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="bold" fill="#1f2937">0..*</text>
+<line x1="867.5" y1="1137.8" x2="664.0" y2="1265.0" stroke="#1f2937" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="677.4,1263.7 664.0,1265.0 671.0,1253.6" fill="none" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="735.4" y="1192.4" width="60.8" height="16" fill="#fff" opacity="0.9"/>
+<text x="765.8" y="1204.4" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" font-style="italic" fill="#1f2937">verifica</text>
+<line x1="190.0" y1="1290.0" x2="190.0" y2="1098.0" stroke="#1f2937" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="184.0,1110.0 190.0,1098.0 196.0,1110.0" fill="none" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="172.8" y="1185.0" width="34.4" height="16" fill="#fff" opacity="0.9"/>
+<text x="190.0" y="1197.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" font-style="italic" fill="#1f2937">cria</text>
+<line x1="621.2" y1="1031.0" x2="898.8" y2="809.0" stroke="#1f2937" stroke-width="1.3" stroke-dasharray="7,5"/>
+<polyline points="885.6,811.8 898.8,809.0 893.1,821.2" fill="none" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="742.8" y="911.0" width="34.4" height="16" fill="#fff" opacity="0.9"/>
+<text x="760.0" y="923.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" font-style="italic" fill="#1f2937">cria</text>
+<rect x="61.19999999999999" y="35.0" width="257.6" height="170" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="61.19999999999999" y="35.0" width="257.6" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="190.0" y="54.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">ListaFavoritos</text>
+<text x="69.2" y="80.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- favoritos: List&lt;Favorito&gt;</text>
+<text x="69.2" y="98.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- LIMITE: int = 40 {readOnly}</text>
+<line x1="61.19999999999999" y1="107.0" x2="318.8" y2="107.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="69.2" y="124.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ adicionar(f: Favorito): void</text>
+<text x="69.2" y="142.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ remover(id: String): void</text>
+<text x="69.2" y="160.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ validarNome(nome: String): boolean</text>
+<text x="69.2" y="178.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ carregar(): void</text>
+<text x="69.2" y="196.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ salvar(): void</text>
+<rect x="84.30000000000001" y="362.0" width="211.39999999999998" height="116" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="84.30000000000001" y="362.0" width="211.39999999999998" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="190.0" y="381.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Favorito</text>
+<text x="92.3" y="407.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- id: String</text>
+<text x="92.3" y="425.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- nome: String</text>
+<line x1="84.30000000000001" y1="434.0" x2="295.7" y2="434.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="92.3" y="451.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ getNome(): String</text>
+<text x="92.3" y="469.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ aplicar(): ConfiguracaoFala</text>
+<rect x="434.5" y="183.0" width="251.0" height="134" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="434.5" y="183.0" width="251.0" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="560.0" y="202.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">ConfiguracaoFala</text>
+<text x="442.5" y="228.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- personalidade: String = &quot;&quot;</text>
+<text x="442.5" y="246.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- velocidade: double = 1.0</text>
+<line x1="434.5" y1="255.0" x2="685.5" y2="255.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="442.5" y="272.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ setVelocidade(v: double): void</text>
+<text x="442.5" y="290.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ setPersonalidade(p: String): void</text>
+<text x="442.5" y="308.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ possuiTraducao(): boolean</text>
+<rect x="877.4" y="43.0" width="165.2" height="134" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="877.4" y="43.0" width="165.2" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="960.0" y="62.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Voz</text>
+<text x="885.4" y="88.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- id: String</text>
+<text x="885.4" y="106.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- nome: String</text>
+<text x="885.4" y="124.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- descricao: String</text>
+<line x1="877.4" y1="133.0" x2="1042.6" y2="133.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="885.4" y="150.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ getId(): String</text>
+<text x="885.4" y="168.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ gerarPrevia(): Audio</text>
+<rect x="801.5" y="254.0" width="317.0" height="152" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="801.5" y="254.0" width="317.0" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="960.0" y="273.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Emocao</text>
+<text x="809.5" y="299.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- id: String</text>
+<text x="809.5" y="317.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- nome: String</text>
+<text x="809.5" y="335.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- fatorVelocidade: double</text>
+<text x="809.5" y="353.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- tom: int</text>
+<text x="809.5" y="371.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- ganhoDb: double</text>
+<line x1="801.5" y1="380.0" x2="1118.5" y2="380.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="809.5" y="397.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ aplicar(a: Audio, velocidade: double): void</text>
+<rect x="870.8" y="500.0" width="178.39999999999998" height="80" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="870.8" y="500.0" width="178.39999999999998" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="960.0" y="519.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Idioma</text>
+<text x="878.8" y="545.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- nome: String</text>
+<line x1="870.8" y1="554.0" x2="1049.1999999999998" y2="554.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="878.8" y="571.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ ehSuportado(): boolean</text>
+<rect x="437.8" y="493.0" width="244.39999999999998" height="134" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="437.8" y="493.0" width="244.39999999999998" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="560.0" y="512.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">SolicitacaoFala</text>
+<text x="445.8" y="538.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- texto: String</text>
+<text x="445.8" y="556.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- dataHora: Date</text>
+<text x="445.8" y="574.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- MAX_TEXTO: int = 1000 {readOnly}</text>
+<line x1="437.8" y1="583.0" x2="682.2" y2="583.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="445.8" y="600.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ validarTexto(): boolean</text>
+<text x="445.8" y="618.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ executar(): Audio</text>
+<rect x="854.3" y="711.0" width="211.39999999999998" height="98" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="854.3" y="711.0" width="211.39999999999998" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="960.0" y="730.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Traducao</text>
+<text x="862.3" y="756.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- textoTraduzido: String</text>
+<text x="862.3" y="774.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- personalidade: String</text>
+<line x1="854.3" y1="783.0" x2="1065.6999999999998" y2="783.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="862.3" y="800.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ getTextoTraduzido(): String</text>
+<rect x="54.60000000000002" y="982.0" width="270.79999999999995" height="116" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="54.60000000000002" y="982.0" width="270.79999999999995" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="190.0" y="1001.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Audio</text>
+<text x="62.6" y="1027.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- conteudo: Blob</text>
+<text x="62.6" y="1045.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- formato: String = &quot;mp3&quot;</text>
+<line x1="54.60000000000002" y1="1054.0" x2="325.4" y2="1054.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="62.6" y="1071.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ reproduzir(velocidade: double): void</text>
+<text x="62.6" y="1089.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ parar(): void</text>
+<rect x="411.4" y="1265.0" width="297.2" height="130" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="411.4" y="1265.0" width="297.2" height="42" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="560.0" y="1282.0" font-family="Helvetica, Arial, sans-serif" font-size="11" text-anchor="middle" font-weight="normal" fill="#1f2937">«abstract»</text>
+<text x="560.0" y="1298.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" font-style="italic" fill="#1f2937">ServicoIA</text>
+<text x="419.4" y="1324.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937"># modelo: String</text>
+<text x="419.4" y="1342.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- chaveApi: String {readOnly}</text>
+<line x1="411.4" y1="1351.0" x2="708.5999999999999" y2="1351.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="419.4" y="1368.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ verificarChave(): boolean</text>
+<text x="419.4" y="1386.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" font-style="italic" fill="#1f2937"># enviar(dados: Object): Object {abstract}</text>
+<rect x="414.70000000000005" y="1031.0" width="290.59999999999997" height="98" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="414.70000000000005" y="1031.0" width="290.59999999999997" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="560.0" y="1050.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">ServicoTraducao</text>
+<text x="422.7" y="1076.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- modelo: String = &quot;gpt-4o-mini&quot;</text>
+<line x1="414.70000000000005" y1="1085.0" x2="705.3" y2="1085.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="422.7" y="1102.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ traduzir(texto: String, idioma: Idioma,</text>
+<text x="422.7" y="1120.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">      personalidade: String): Traducao</text>
+<rect x="34.80000000000001" y="1290.0" width="310.4" height="80" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="34.80000000000001" y="1290.0" width="310.4" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="190.0" y="1309.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">ServicoSintese</text>
+<text x="42.8" y="1335.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- modelo: String = &quot;tts-1&quot;</text>
+<line x1="34.80000000000001" y1="1344.0" x2="345.2" y2="1344.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="42.8" y="1361.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ sintetizar(texto: String, voz: Voz): Audio</text>
+<rect x="57.900000000000006" y="675.0" width="264.2" height="170" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="57.900000000000006" y="675.0" width="264.2" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="190.0" y="694.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">ControleRequisicoes</text>
+<text x="65.9" y="720.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- ip: String</text>
+<text x="65.9" y="738.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- quantidade: int</text>
+<text x="65.9" y="756.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- fimJanela: long</text>
+<text x="65.9" y="774.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- LIMITE: int = 60 {readOnly}</text>
+<text x="65.9" y="792.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- JANELA_MS: long = 600000 {readOnly}</text>
+<line x1="57.900000000000006" y1="801.0" x2="322.1" y2="801.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="65.9" y="818.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ verificar(ip: String): boolean</text>
+<text x="65.9" y="836.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ segundosRestantes(): int</text>
+<rect x="867.5" y="1022.0" width="185.0" height="116" fill="#f8fafc" stroke="#1f2937" stroke-width="1.3"/>
+<rect x="867.5" y="1022.0" width="185.0" height="28" fill="#e0e7ff" stroke="#1f2937" stroke-width="1.3"/>
+<text x="960.0" y="1041.0" font-family="Helvetica, Arial, sans-serif" font-size="13" text-anchor="middle" font-weight="bold" fill="#1f2937">Diagnostico</text>
+<text x="875.5" y="1067.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- possuiChave: boolean</text>
+<text x="875.5" y="1085.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- chaveValida: boolean</text>
+<text x="875.5" y="1103.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">- erro: String</text>
+<line x1="867.5" y1="1112.0" x2="1052.5" y2="1112.0" stroke="#1f2937" stroke-width="1.3"/>
+<text x="875.5" y="1129.0" font-family="Helvetica, Arial, sans-serif" font-size="12" text-anchor="start" font-weight="normal" fill="#1f2937">+ executar(): Diagnostico</text>
+</svg>
