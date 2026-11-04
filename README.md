@@ -36,7 +36,32 @@ Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
 
 ## Documentação
 
-A documentação de análise e projeto fica na pasta [`docs/`](docs/):
+📄 **Documentação completa em PDF:** [`docs/Documentacao-Tradutor-Neox.pdf`](docs/Documentacao-Tradutor-Neox.pdf)
 
-- [1. Visão geral do sistema](docs/01-visao-geral.md)
-- [Resumos das aulas](docs/aulas/)
+| Seção | Conteúdo |
+| --- | --- |
+| [1. Visão geral](docs/01-visao-geral.md) | Problema, proposta, análise × projeto e etapas do desenvolvimento |
+| [2. Requisitos](docs/02-requisitos.md) | Elicitação, requisitos funcionais, não funcionais e regras de negócio |
+| [3. Casos de uso](docs/03-casos-de-uso.md) | Atores, diagrama e documentação dos casos de uso |
+| [4. Classes de análise](docs/04-classes-de-analise.md) | Substantivos candidatos e primeiro modelo estrutural |
+| [5. Diagrama de classes](docs/05-diagrama-de-classes.md) | Classes de projeto e relacionamentos |
+| [6. Versionamento](docs/06-versionamento.md) | Git, commits semânticos e branches |
+
+Os diagramas ficam em [`docs/diagramas/`](docs/diagramas/), em `.drawio` (editável no Draw.io) e `.svg`.
+Os resumos das aulas ficam em [`docs/aulas/`](docs/aulas/).
+
+### Regerar diagramas e PDF
+
+Requer Python 3, o pacote `markdown` e o Google Chrome (ou Chromium):
+
+```bash
+pip install markdown
+```
+
+```bash
+python3 scripts/diagramas.py
+```
+
+```bash
+python3 scripts/gerar_pdf.py
+```
