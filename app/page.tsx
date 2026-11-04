@@ -271,6 +271,7 @@ export default function Page() {
       </button>
 
       <audio ref={audioRef} controls />
+      <div className="hint">A voz reproduzida é gerada por inteligência artificial.</div>
 
       {translated && (
         <section className="result">
