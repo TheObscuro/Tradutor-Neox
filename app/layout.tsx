@@ -1,3 +1,5 @@
+import "./globals.css";
+
 export const metadata = {
   title: 'Tradutor Neox',
   description: 'Tradutor de textos com síntese de voz',
