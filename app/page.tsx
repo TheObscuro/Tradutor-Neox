@@ -1,72 +1,38 @@
 ﻿"use client";
 import { useEffect, useRef, useState } from "react";
+import {
+  EMOTIONS,
+  LANGUAGES,
+  MAX_PERSONALITY_LENGTH,
+  MAX_TEXT_LENGTH,
+  SPEED_MAX,
+  SPEED_MIN,
+  SPEED_STEP,
+  type Voice
+} from "@/lib/constants";
+import { playBlobWithEmotion, stopEmotionPlayback } from "@/lib/audio";
+import { addPreset, loadPresets, savePresets, validatePresetName, type Preset } from "@/lib/presets";
 
-type Voice = { id: string; label: string; note?: string };
-
-async function playBlobWithEmotion(blob: Blob, emotion: string) {
-  // Reproduz com Web Audio alterando apenas prosódia (pitch/velocidade/ganho)
-  const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
-  const arrayBuf = await blob.arrayBuffer();
-  const audioBuf = await ctx.decodeAudioData(arrayBuf);
-
-  const source = ctx.createBufferSource();
-  source.buffer = audioBuf;
-
-  const gain = ctx.createGain();
-  const filter = ctx.createBiquadFilter();
-  filter.type = "peaking";
-  filter.frequency.value = 200;   // realça leve graves para "triste", etc.
-  filter.Q.value = 0.7;
-  filter.gain.value = 0;
-
-  // defaults
-  let rate = 1.0;
-  let detune = 0; // cents (-100 = -1 semitom)
-  let gainDb = 0;
-  let filterGain = 0;
-
-  switch (emotion) {
-    case "happy":
-      rate = 1.10;
-      detune = +100;
-      gainDb = +1.5;
-      filterGain = -2; // tira um pouco de grave
-      break;
-    case "sad":
-      rate = 0.90;
-      detune = -100;
-      gainDb = -2.0;
-      filterGain = +2; // dá calor nos graves
-      break;
-    case "calm":
-      rate = 0.95;
-      detune = 0;
-      gainDb = 0;
-      filterGain = +1;
-      break;
-    case "energetic":
-      rate = 1.20;
-      detune = +50;
-      gainDb = +2.0;
-      filterGain = -1;
-      break;
-    case "neutral":
-    default:
-      // nada
-      break;
+async function readError(resp: Response, fallback: string) {
+  try {
+    const data = await resp.json();
+    return data?.error || fallback;
+  } catch {
+    return fallback;
   }
+}
 
-  // aplica
-  source.playbackRate.value = rate;
-  // nem todos browsers suportam detune; ignore se não houver
-  try { (source as any).detune?.setValueAtTime?.(detune, ctx.currentTime); } catch {}
-
-  // converte dB para linear
-  gain.gain.value = Math.pow(10, gainDb / 20);
-  filter.gain.value = filterGain;
-
-  source.connect(filter).connect(gain).connect(ctx.destination);
-  source.start(0);
+async function requestSpeech(text: string, voice: string): Promise<Blob> {
+  const resp = await fetch("/api/tts", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ text, voice })
+  });
+  const ct = resp.headers.get("content-type") || "";
+  if (!resp.ok || !ct.includes("audio/")) {
+    throw new Error(await readError(resp, "Falha ao gerar áudio."));
+  }
+  return resp.blob();
 }
 
 export default function Page() {
@@ -74,264 +40,294 @@ export default function Page() {
   const [translated, setTranslated] = useState("");
   const [personality, setPersonality] = useState("");
   const [targetLanguage, setTargetLanguage] = useState("");
-  const [currentVoice, setCurrentVoice] = useState("alloy");
+  const [voice, setVoice] = useState("alloy");
   const [emotion, setEmotion] = useState("neutral");
+  const [speed, setSpeed] = useState(1);
   const [voices, setVoices] = useState<Voice[]>([]);
+  const [presets, setPresets] = useState<Preset[]>([]);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+  const [voiceOpen, setVoiceOpen] = useState(false);
+  const [presetsOpen, setPresetsOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
+  const lastFocus = useRef<HTMLElement | null>(null);
 
-  const languages = [
-    "Português do Brasil",
-    "Inglês Americano",
-    "Espanhol",
-    "Francês",
-    "Alemão",
-    "Italiano",
-    "Japonês",
-    "Chinês (Mandarim)",
-    "Coreano",
-    "Russo",
-    "Árabe",
-    "Hindi",
-    "Sueco",
-    "Norueguês",
-    "Holandês",
-    "Turco",
-    "Grego",
-    "Hebraico",
-    "Tailandês",
-    "Polonês",
-    "Romeno",
-    "Ucraniano",
-    "Finlandês",
-    "Indonésio",
-    "Vietnamita",
-  ];
-
+  // RF-03: carrega as vozes disponiveis
   useEffect(() => {
     fetch("/api/voices")
       .then((res) => res.json())
-      .then((data) => setVoices(data.voices))
-      .catch(() => alert("Erro ao carregar vozes"));
+      .then((data) => setVoices(data.voices || []))
+      .catch(() => setError("Não foi possível carregar as vozes."));
   }, []);
 
-  const handleSpeak = async () => {
-  if (!text.trim()) { alert("Digite um texto."); return; }
-  setLoading(true);
-  setTranslated("");
+  // RF-08: favoritos ficam salvos no navegador
+  useEffect(() => {
+    setPresets(loadPresets());
+  }, []);
 
-  try {
-    // 1) traduz primeiro (se idioma escolhido)
-    let textToSpeak = text;
-    if (targetLanguage && targetLanguage.trim()) {
-      const tr = await fetch("/api/translate", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text, targetLanguage })
-      });
-      if (!tr.ok) {
-        const msg = await tr.text().catch(() => "");
-        alert(`Falha ao traduzir: ${msg}`);
-        setLoading(false);
-        return;
-      }
-      const data = await tr.json();
-      textToSpeak = data.translated || text;
-      setTranslated(textToSpeak); // mostra a tradução na tela
-    }
+  // RNF-05: ESC fecha as janelas e devolve o foco
+  useEffect(() => {
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setVoiceOpen(false);
+      setPresetsOpen(false);
+      lastFocus.current?.focus();
+    };
+    window.addEventListener("keydown", onEsc);
+    return () => window.removeEventListener("keydown", onEsc);
+  }, []);
 
-    // 2) pede o áudio (sem emoção no backend)
-    const resp = await fetch("/api/tts", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: textToSpeak, voice: currentVoice })
-    });
+  // RF-07: a velocidade vale tambem para o audio que ja esta no player
+  useEffect(() => {
+    if (audioRef.current) audioRef.current.playbackRate = speed;
+  }, [speed]);
 
-    const ct = resp.headers.get("content-type") || "";
-    if (!resp.ok || !ct.includes("audio/")) {
-      const errText = await resp.text().catch(() => "");
-      alert(`Erro no TTS: ${errText || ct}`);
-      return;
-    }
+  const tooLong = text.length > MAX_TEXT_LENGTH;
 
-    const blob = await resp.blob();
-
-    // 3) reprodução: se emoção ≠ neutro, usa WebAudio pra afetar só a voz
-    if (emotion !== "neutral") {
-      await playBlobWithEmotion(blob, emotion);
-    } else {
-      // neutro: usa <audio> normal
-      const url = URL.createObjectURL(blob);
-      audioRef.current!.src = url;
-      await audioRef.current!.play().catch(() => {});
-    }
-  } catch (e) {
-    console.error(e);
-    alert("Erro ao traduzir/gerar áudio.");
-  } finally {
-    setLoading(false);
-  }
-};
-
-
-  const styles = {
-    page: {
-      color: "#e5e7eb",
-      background:
-        "linear-gradient(160deg, #0f172a 0%, #1e293b 40%, #3b82f6 120%)",
-      minHeight: "100vh",
-      padding: "40px 16px",
-    } as React.CSSProperties,
-    card: {
-      maxWidth: 800,
-      margin: "0 auto",
-      background: "#0b1220",
-      border: "1px solid #334155",
-      borderRadius: 16,
-      padding: 20,
-      boxShadow: "0 10px 30px rgba(0,0,0,.4)",
-    } as React.CSSProperties,
+  const openModal = (open: (v: boolean) => void) => {
+    lastFocus.current = document.activeElement as HTMLElement;
+    open(true);
   };
 
-  return (
-    <div style={styles.page}>
-      <div style={styles.card}>
-        <h1 style={{ textAlign: "center" }}>Tradutor com Voz 🎙️</h1>
+  const playBlob = async (blob: Blob) => {
+    stopEmotionPlayback();
+    audioRef.current?.pause();
+    if (emotion !== "neutral") {
+      await playBlobWithEmotion(blob, emotion, speed); // RF-05
+      return;
+    }
+    const a = audioRef.current!;
+    a.src = URL.createObjectURL(blob);
+    a.playbackRate = speed;
+    await a.play().catch(() => {});
+  };
 
-        <label>Texto original:</label>
+  // RF-01 + RF-02: traduz (se houver idioma) e fala o resultado
+  const handleSpeak = async () => {
+    setError("");
+    if (!text.trim()) { setError("Digite um texto."); return; }
+    if (tooLong) { setError(`O texto deve ter no máximo ${MAX_TEXT_LENGTH} caracteres.`); return; }
+
+    setLoading(true);
+    setTranslated("");
+    try {
+      let textToSpeak = text;
+      if (targetLanguage) {
+        const tr = await fetch("/api/translate", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ text, targetLanguage, personality })
+        });
+        if (!tr.ok) throw new Error(await readError(tr, "Falha ao traduzir."));
+        const data = await tr.json();
+        textToSpeak = data.translated || text;
+        setTranslated(textToSpeak);
+      }
+      await playBlob(await requestSpeech(textToSpeak, voice));
+    } catch (e: any) {
+      setError(e?.message || "Erro ao traduzir/gerar áudio.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // RF-04: previa da voz
+  const playPreview = async (v: Voice) => {
+    setError("");
+    try {
+      const blob = await requestSpeech(`Esta é uma prévia da voz ${v.label}.`, v.id);
+      const aud = new Audio(URL.createObjectURL(blob));
+      aud.playbackRate = speed;
+      await aud.play().catch(() => {});
+    } catch (e: any) {
+      setError(e?.message || "Não foi possível tocar a prévia.");
+    }
+  };
+
+  // RF-08: salvar favorito
+  const handleSavePreset = () => {
+    const name = prompt('Nome do favorito (ex.: "Aula calma - Inglês"):');
+    if (name === null) return;
+    const invalid = validatePresetName(presets, name);
+    if (invalid) { setError(invalid); return; }
+    const list = addPreset(presets, {
+      id: crypto.randomUUID(),
+      name: name.trim(),
+      voice,
+      emotion,
+      personality: personality.trim(),
+      targetLanguage,
+      speed
+    });
+    setPresets(list);
+    savePresets(list);
+    setError("");
+  };
+
+  // RF-09: aplicar favorito
+  const applyPreset = (p: Preset) => {
+    setVoice(p.voice);
+    setEmotion(p.emotion);
+    setPersonality(p.personality);
+    setTargetLanguage(p.targetLanguage);
+    setSpeed(Number(p.speed) || 1);
+    setPresetsOpen(false);
+  };
+
+  // RF-10: excluir favorito
+  const deletePreset = (id: string) => {
+    const list = presets.filter((x) => x.id !== id);
+    setPresets(list);
+    savePresets(list);
+  };
+
+  const voiceLabel = voices.find((v) => v.id === voice)?.label || voice;
+  const emotionLabel = (id: string) => EMOTIONS.find((e) => e.id === id)?.label || id;
+
+  return (
+    <main className="wrap">
+      <h1>Tradutor Neox 🎙️</h1>
+
+      <div className="field">
+        <label htmlFor="text">Texto original</label>
         <textarea
+          id="text"
           rows={5}
           value={text}
           onChange={(e) => setText(e.target.value)}
           placeholder="Digite o texto..."
-          style={{
-            width: "100%",
-            background: "#0f172a",
-            color: "#e5e7eb",
-            border: "1px solid #475569",
-            borderRadius: 10,
-            padding: "12px 14px",
-            marginBottom: 12,
-          }}
         />
+        <div className={`hint${tooLong ? " over" : ""}`}>
+          {text.length}/{MAX_TEXT_LENGTH} caracteres
+        </div>
+      </div>
 
-        <label>Idioma de tradução:</label>
-        <select
-          value={targetLanguage}
-          onChange={(e) => setTargetLanguage(e.target.value)}
-          style={{
-            width: "100%",
-            background: "#0f172a",
-            color: "#e5e7eb",
-            border: "1px solid #475569",
-            borderRadius: 10,
-            padding: "10px 12px",
-            marginBottom: 16,
-          }}
-        >
+      <div className="field">
+        <label htmlFor="lang">Idioma de tradução</label>
+        <select id="lang" value={targetLanguage} onChange={(e) => setTargetLanguage(e.target.value)}>
           <option value="">Sem tradução</option>
-          {languages.map((lang) => (
-            <option key={lang} value={lang}>
-              {lang}
-            </option>
+          {LANGUAGES.map((lang) => (
+            <option key={lang} value={lang}>{lang}</option>
           ))}
         </select>
+      </div>
 
-        <label>Personalidade (opcional):</label>
+      <div className="field">
+        <label htmlFor="persona">Personalidade (opcional)</label>
         <input
+          id="persona"
           type="text"
+          maxLength={MAX_PERSONALITY_LENGTH}
           value={personality}
           onChange={(e) => setPersonality(e.target.value)}
-          placeholder="Ex: voz calma, engraçada..."
-          style={{
-            width: "100%",
-            background: "#0f172a",
-            color: "#e5e7eb",
-            border: "1px solid #475569",
-            borderRadius: 10,
-            padding: "12px 14px",
-            marginBottom: 12,
-          }}
+          placeholder="Ex.: professor paciente, formal, bem-humorado..."
+          disabled={!targetLanguage}
         />
+        <div className="hint">
+          {targetLanguage ? "Ajusta o tom da tradução." : "Disponível quando um idioma de tradução é escolhido."}
+        </div>
+      </div>
 
-        <label>Emoção:</label>
-        <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginBottom: 16 }}>
-          {[
-            { id: "neutral", label: "Neutro" },
-            { id: "happy", label: "Feliz" },
-            { id: "sad", label: "Triste" },
-            { id: "calm", label: "Sereno" },
-            { id: "energetic", label: "Energético" },
-          ].map((e) => (
-            <button
-              key={e.id}
-              onClick={() => setEmotion(e.id)}
-              style={{
-                flex: 1,
-                background:
-                  emotion === e.id
-                    ? "linear-gradient(135deg,#06b6d4,#8b5cf6)"
-                    : "#0f172a",
-                color: emotion === e.id ? "white" : "#e5e7eb",
-                border: "1px solid #475569",
-                borderRadius: 10,
-                padding: "10px 12px",
-                cursor: "pointer",
-              }}
-            >
+      <div className="field">
+        <label>Emoção</label>
+        <div className="row">
+          {EMOTIONS.map((e) => (
+            <button key={e.id} className="grow" aria-pressed={emotion === e.id} onClick={() => setEmotion(e.id)}>
               {e.label}
             </button>
           ))}
         </div>
-
-        <label>Voz:</label>
-        <select
-          value={currentVoice}
-          onChange={(e) => setCurrentVoice(e.target.value)}
-          style={{
-            width: "100%",
-            background: "#0f172a",
-            color: "#e5e7eb",
-            border: "1px solid #475569",
-            borderRadius: 10,
-            padding: "10px 12px",
-            marginBottom: 16,
-          }}
-        >
-          {voices.map((v) => (
-            <option key={v.id} value={v.id}>
-              {v.label} — {v.note}
-            </option>
-          ))}
-        </select>
-
-        <button
-          onClick={handleSpeak}
-          disabled={loading}
-          style={{
-            width: "100%",
-            padding: "12px 16px",
-            background: "linear-gradient(135deg,#8b5cf6,#06b6d4)",
-            color: "white",
-            fontWeight: "bold",
-            border: 0,
-            borderRadius: 12,
-            cursor: "pointer",
-            boxShadow: "0 8px 24px rgba(0,0,0,.35)",
-          }}
-        >
-          {loading ? "Gerando..." : "Traduzir & Falar"}
-        </button>
-
-        <audio ref={audioRef} controls style={{ width: "100%", marginTop: 16 }} />
-
-        {translated && (
-          <div style={{ marginTop: 20 }}>
-            <h3>Tradução:</h3>
-            <p style={{ whiteSpace: "pre-wrap" }}>{translated}</p>
-          </div>
-        )}
       </div>
-    </div>
+
+      <div className="field">
+        <label>Voz <span className="chip">{voiceLabel}</span></label>
+        <button onClick={() => openModal(setVoiceOpen)}>Escolher voz</button>
+      </div>
+
+      <div className="field">
+        <label htmlFor="speed">
+          Velocidade <span className="chip">{speed.toFixed(2)}x</span>
+        </label>
+        <input
+          id="speed"
+          type="range"
+          min={SPEED_MIN}
+          max={SPEED_MAX}
+          step={SPEED_STEP}
+          value={speed}
+          onChange={(e) => setSpeed(Number(e.target.value))}
+        />
+      </div>
+
+      <div className="field row">
+        <button onClick={handleSavePreset}>Salvar como favorito</button>
+        <button onClick={() => openModal(setPresetsOpen)}>Favoritos ({presets.length})</button>
+      </div>
+
+      {error && <div className="error" role="alert">{error}</div>}
+
+      <button className="primary full" onClick={handleSpeak} disabled={loading || tooLong}>
+        {loading ? "Gerando..." : targetLanguage ? "Traduzir & Falar" : "Falar"}
+      </button>
+
+      <audio ref={audioRef} controls />
+
+      {translated && (
+        <section className="result">
+          <h3>Tradução</h3>
+          <p>{translated}</p>
+        </section>
+      )}
+
+      {voiceOpen && (
+        <div className="overlay" onClick={(e) => e.target === e.currentTarget && setVoiceOpen(false)}>
+          <div className="modal" role="dialog" aria-modal="true" aria-labelledby="voiceTitle">
+            <header>
+              <h2 id="voiceTitle">Escolher voz</h2>
+              <button onClick={() => setVoiceOpen(false)}>Fechar</button>
+            </header>
+            <div className="cards">
+              {voices.map((v) => (
+                <div key={v.id} className="card">
+                  <h3>{v.label}</h3>
+                  <p>{v.note}</p>
+                  <div className="row">
+                    <button onClick={() => playPreview(v)}>Prévia</button>
+                    <button className="primary" onClick={() => { setVoice(v.id); setVoiceOpen(false); }}>
+                      Usar esta voz
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {presetsOpen && (
+        <div className="overlay" onClick={(e) => e.target === e.currentTarget && setPresetsOpen(false)}>
+          <div className="modal" role="dialog" aria-modal="true" aria-labelledby="presetsTitle">
+            <header>
+              <h2 id="presetsTitle">Favoritos</h2>
+              <button onClick={() => setPresetsOpen(false)}>Fechar</button>
+            </header>
+            <div className="cards">
+              {presets.length === 0 && <div className="card"><p>Nenhum favorito salvo ainda.</p></div>}
+              {presets.map((p) => (
+                <div key={p.id} className="card">
+                  <h3>{p.name}</h3>
+                  <p>Voz: {p.voice} · Emoção: {emotionLabel(p.emotion)} · Velocidade: {Number(p.speed).toFixed(2)}x</p>
+                  <p>Idioma: {p.targetLanguage || "sem tradução"} · Personalidade: {p.personality || "nenhuma"}</p>
+                  <div className="row">
+                    <button className="primary" onClick={() => applyPreset(p)}>Aplicar</button>
+                    <button onClick={() => deletePreset(p.id)}>Excluir</button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
+    </main>
   );
 }
