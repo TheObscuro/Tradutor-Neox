@@ -40,12 +40,12 @@ Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
 
 | Seção | Conteúdo |
 | --- | --- |
-| [1. Visão geral](docs/01-visao-geral.md) | Problema, proposta, análise × projeto e etapas do desenvolvimento |
+| [1. Descrição do projeto](docs/01-descricao-do-projeto.md) | Contexto, problema, objetivo e escopo |
 | [2. Requisitos](docs/02-requisitos.md) | Elicitação, requisitos funcionais, não funcionais e regras de negócio |
 | [3. Casos de uso](docs/03-casos-de-uso.md) | Atores, diagrama e documentação dos casos de uso |
-| [4. Classes de análise](docs/04-classes-de-analise.md) | Substantivos candidatos e primeiro modelo estrutural |
-| [5. Diagrama de classes](docs/05-diagrama-de-classes.md) | Classes de projeto e relacionamentos |
-| [6. Versionamento](docs/06-versionamento.md) | Git, commits semânticos e branches |
+| [4. Diagrama de classes](docs/04-diagrama-de-classes.md) | Classes de projeto e relacionamentos |
+| [5. Repositório](docs/05-repositorio.md) | Link, Git, commits semânticos e branches |
+| [Apêndice A — Classes de análise](docs/apendice-a-classes-de-analise.md) | Substantivos candidatos e primeiro modelo estrutural |
 
 Os diagramas ficam em [`docs/diagramas/`](docs/diagramas/), em `.drawio` (editável no Draw.io) e `.svg`.
 Os resumos das aulas ficam em [`docs/aulas/`](docs/aulas/).

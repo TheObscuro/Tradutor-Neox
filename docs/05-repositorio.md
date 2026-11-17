@@ -1,8 +1,19 @@
-# 6. Versionamento com Git
+# 5. Repositório
 
-O projeto é versionado com Git e hospedado no GitHub (`TheObscuro/Tradutor-Neox`), atendendo ao RNF-10.
+**Link do repositório:** [https://github.com/TheObscuro/Tradutor-Neox](https://github.com/TheObscuro/Tradutor-Neox)
 
-## 6.1 Configuração
+O repositório é público. Todo o código e a documentação (incluindo os diagramas em `.drawio`) estão
+versionados com Git, atendendo ao RNF-10.
+
+| Pasta / arquivo | Conteúdo |
+| --- | --- |
+| `app/` | Tela (`page.tsx`) e rotas da API (`api/translate`, `api/tts`, `api/voices`, `api/diag`) |
+| `lib/` | Regras compartilhadas: constantes, limite de requisições, áudio e favoritos |
+| `docs/` | Documentação em Markdown, este PDF e os diagramas (`docs/diagramas/`) |
+| `scripts/` | Geradores dos diagramas e do PDF |
+| `README.md` | Nome do projeto, integrante, descrição e como executar |
+
+## 5.1 Configuração
 
 ```bash
 git config --global user.name "VitorManoel"
@@ -21,7 +32,7 @@ O `.gitignore` impede que arquivos gerados ou sensíveis entrem no histórico:
 
 O `package-lock.json` **é versionado**, para que todos instalem as mesmas versões das dependências.
 
-## 6.2 Commits semânticos (Conventional Commits)
+## 5.2 Commits semânticos (Conventional Commits)
 
 Formato adotado: `<tipo>(escopo opcional): <descricao curta>`, verbo no presente, letras minúsculas,
 sem ponto final e sem acentos. Quando o motivo da mudança não é óbvio, o commit tem corpo (segundo `-m`).
@@ -47,7 +58,7 @@ git commit -m "refactor: centraliza vozes, idiomas e limites em lib/constants" \
 > à adoção do padrão. Como já foram enviados ao GitHub, não foram reescritos — reescrever histórico
 > compartilhado causa problemas para quem já tem o repositório clonado.
 
-## 6.3 Branches
+## 5.3 Branches
 
 Cada tarefa é desenvolvida em uma branch própria, com o tipo do commit como prefixo, e integrada com `merge`:
 

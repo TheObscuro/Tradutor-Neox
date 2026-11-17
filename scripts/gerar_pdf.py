@@ -34,14 +34,17 @@ DISCIPLINA = "Análise e Projeto de Sistemas"
 AUTOR = os.environ.get("DOC_AUTOR", "Vitor Manoel")
 INSTITUICAO = os.environ.get("DOC_INSTITUICAO", "")
 PROFESSOR = os.environ.get("DOC_PROFESSOR", "")
+REPOSITORIO = "https://github.com/TheObscuro/Tradutor-Neox"
 
+# Ordem exigida pelo trabalho pratico: descricao, requisitos, casos de uso,
+# diagrama de classes de projeto e repositorio. As classes de analise ficam em apendice.
 SECOES = [
-    "01-visao-geral.md",
+    "01-descricao-do-projeto.md",
     "02-requisitos.md",
     "03-casos-de-uso.md",
-    "04-classes-de-analise.md",
-    "05-diagrama-de-classes.md",
-    "06-versionamento.md",
+    "04-diagrama-de-classes.md",
+    "05-repositorio.md",
+    "apendice-a-classes-de-analise.md",
 ]
 
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
@@ -72,7 +75,8 @@ section.secao { break-before: page; }
 .capa .topo { font-size: 13pt; text-transform: uppercase; letter-spacing: 1px; color: #374151; }
 .capa .meio h1 { border: 0; font-size: 34pt; margin: 0; }
 .capa .meio p { font-size: 15pt; color: #374151; }
-.capa .base { font-size: 12pt; }
+.capa .base { font-size: 12pt; line-height: 1.8; }
+.capa .repo { margin-top: 10px; font-size: 12pt; }
 .sumario { break-before: page; }
 .sumario ol { font-size: 12pt; line-height: 2; }
 .sumario ol ol { font-size: 10.5pt; line-height: 1.6; }
@@ -114,13 +118,18 @@ def montar_html() -> str:
         f'<li><a href="#{i}">{t}</a><ol>' + "".join(f'<li><a href="#{a}">{b}</a></li>' for a, b in sub) + "</ol></li>"
         for i, t, sub in sumario
     )
-    extra = "".join(f"<div>{x}</div>" for x in (INSTITUICAO, DISCIPLINA) if x)
+    extra = f"<div>{INSTITUICAO}</div>" if INSTITUICAO else ""
     prof = f"<div>Professor(a): {PROFESSOR}</div>" if PROFESSOR else ""
     capa = f"""
 <div class="capa">
   <div class="topo">{extra}</div>
   <div class="meio"><h1>{TITULO}</h1><p>{SUBTITULO}</p></div>
-  <div class="base"><div><b>{AUTOR}</b></div>{prof}<div>{data}</div></div>
+  <div class="base">
+    <div>Integrante: <b>{AUTOR}</b></div>{prof}
+    <div>Disciplina: {DISCIPLINA}</div>
+    <div>{data}</div>
+    <div class="repo">Repositório: <a href="{REPOSITORIO}">{REPOSITORIO}</a></div>
+  </div>
 </div>
 <div class="sumario"><h1>Sumário</h1><ol style="list-style:none;padding-left:0">{sum_html}</ol></div>
 """
