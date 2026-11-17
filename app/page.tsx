@@ -14,11 +14,15 @@ import { playBlobWithEmotion, stopEmotionPlayback } from "@/lib/audio";
 import { addPreset, loadPresets, savePresets, validatePresetName, type Preset } from "@/lib/presets";
 
 
+
 import {
   addTranslationHistory,
+  clearTranslationHistory,
+  deleteTranslationHistory,
   loadTranslationHistory,
   type TranslationRecord,
 } from "@/lib/translation-history";
+
 
 
 async function readError(resp: Response, fallback: string) {
@@ -102,6 +106,27 @@ export default function Page() {
     lastFocus.current = document.activeElement as HTMLElement;
     open(true);
   };
+
+  const handleReuseTranslation = (record: TranslationRecord) => {
+    setText(record.sourceText);
+    setTranslated(record.translatedText);
+    setTargetLanguage(record.targetLanguage);
+    setHistoryOpen(false);
+  };
+
+  const handleDeleteTranslation = (id: string) => {
+    setHistory(deleteTranslationHistory(id));
+  };
+
+  const handleClearHistory = () => {
+    if (!window.confirm("Deseja apagar todo o histórico de traduções?")) {
+      return;
+  }
+
+  clearTranslationHistory();
+  setHistory([]);
+  };
+
 
   const playBlob = async (blob: Blob) => {
     stopEmotionPlayback();
@@ -395,6 +420,13 @@ setHistory(addTranslationHistory(record));
                 Histórico de traduções
               </h2>
 
+              <button
+                onClick={handleClearHistory}
+                disabled={history.length === 0}
+              >
+                Limpar histórico
+              </button>
+
               <button onClick={() => setHistoryOpen(false)}>
                 Fechar
               </button>
@@ -417,6 +449,22 @@ setHistory(addTranslationHistory(record));
                       <strong>Tradução:</strong>{" "}
                       {record.translatedText}
                     </p>
+
+                    <div className="row">
+                      <button
+                        className="primary"
+                        onClick={() => handleReuseTranslation(record)}
+                      >
+                        Reutilizar
+                      </button>
+
+                      <button
+                        onClick={() => handleDeleteTranslation(record.id)}
+                      >
+                        Excluir
+                      </button>
+                    </div>
+
                   </div>
                 ))
               )}

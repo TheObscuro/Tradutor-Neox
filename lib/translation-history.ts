@@ -59,3 +59,19 @@ export function addTranslationHistory(
 
   return updated;
 }
+
+
+export function deleteTranslationHistory(
+  id: string
+): TranslationRecord[] {
+  const history = loadTranslationHistory();
+
+  const updated = history.filter(
+    (record) => record.id !== id
+  );
+
+  saveTranslationHistory(updated);
+
+  return updated;
+}
+
