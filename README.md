@@ -57,6 +57,20 @@ Para iniciar a aplicação:
 
 npm run start
 
+## Verificação de tipos
+
+O projeto utiliza TypeScript para auxiliar na identificação
+de erros de tipagem durante o desenvolvimento.
+
+Para verificar os tipos do projeto, execute:
+
+```bash
+npm run typecheck
+```
+
+Esse comando verifica possíveis erros de tipagem sem gerar
+novos arquivos de saída.
+
 ## Rotas da API
 
 | Rota | Método | Descrição |
