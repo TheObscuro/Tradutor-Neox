@@ -1,9 +1,9 @@
-# 5. Diagrama de Classes de Projeto
+# 4. Diagrama de Classes de Projeto
 
-Refinamento das classes de análise (seção 4) com a notação completa da UML:
+Refinamento das classes de análise (Apêndice A) com a notação completa da UML:
 visibilidade, tipos, valores iniciais, propriedades e os tipos de relacionamento.
 
-## 5.1 Da análise ao projeto
+## 4.1 Da análise ao projeto
 
 | Classe de análise | Classe de projeto | O que mudou |
 | --- | --- | --- |
@@ -13,13 +13,13 @@ visibilidade, tipos, valores iniciais, propriedades e os tipos de relacionamento
 | `Traducao` (textoOriginal, textoTraduzido, idiomaDestino) | `Traducao` como **classe associativa** | Existe na relação entre `SolicitacaoFala` e `Idioma` |
 | Ator externo OpenAI | `ServicoIA` «abstract», `ServicoTraducao`, `ServicoSintese` | Classes de fronteira que encapsulam o serviço externo |
 
-## 5.2 Diagrama
+## 4.2 Diagrama
 
 ![Diagrama de classes de projeto](diagramas/classes-projeto.svg)
 
 Arquivo editável no Draw.io: [`diagramas/classes-projeto.drawio`](diagramas/classes-projeto.drawio)
 
-## 5.3 Classes
+## 4.3 Classes
 
 ### ConfiguracaoFala
 
@@ -76,7 +76,7 @@ Arquivo editável no Draw.io: [`diagramas/classes-projeto.drawio`](diagramas/cla
 | `ControleRequisicoes` | `- ip: String`, `- quantidade: int`, `- fimJanela: long`, `- LIMITE: int = 60 {readOnly}`, `- JANELA_MS: long = 600000 {readOnly}`; `+ verificar(ip: String): boolean`, `+ segundosRestantes(): int` |
 | `Diagnostico` | `- possuiChave: boolean`, `- chaveValida: boolean`, `- erro: String`; `+ executar(): Diagnostico` |
 
-## 5.4 Relacionamentos (aplicando a árvore de decisão)
+## 4.4 Relacionamentos (aplicando a árvore de decisão)
 
 | Relacionamento | Tipo | Justificativa |
 | --- | --- | --- |
@@ -94,7 +94,7 @@ Arquivo editável no Draw.io: [`diagramas/classes-projeto.drawio`](diagramas/cla
 | `ServicoTraducao` ⇢ `Traducao`, `ServicoSintese` ⇢ `Audio` | **Dependência** | Os serviços criam esses objetos como retorno dos métodos |
 | `Diagnostico` ⇢ `ServicoIA` | **Dependência** | Usa `verificarChave()` durante `executar()` |
 
-## 5.5 Checklist de refinamento
+## 4.5 Checklist de refinamento
 
 | Item | Verificação |
 | --- | --- |
@@ -104,7 +104,7 @@ Arquivo editável no Draw.io: [`diagramas/classes-projeto.drawio`](diagramas/cla
 | **Nomenclatura** | Classes no singular em PascalCase; atributos e métodos em camelCase; métodos com verbo |
 | **Duplicidade** | "Preset" e "Favorito" unificados; `idioma` deixou de ser atributo repetido em duas classes e virou a classe `Idioma` |
 
-## 5.6 Correspondência com o código
+## 4.6 Correspondência com o código
 
 | Classe | Implementação |
 | --- | --- |

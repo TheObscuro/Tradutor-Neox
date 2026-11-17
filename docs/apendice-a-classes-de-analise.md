@@ -1,9 +1,9 @@
-# 4. Classes de Análise
+# Apêndice A — Classes de Análise
 
 Visão **estrutural** do sistema: quais conceitos existem no domínio do Tradutor Neox e como se relacionam.
 Nesta etapa as classes têm apenas nome, atributos e métodos em alto nível, sem tipos nem visibilidade.
 
-## 4.1 Substantivos candidatos
+## A.1 Substantivos candidatos
 
 Substantivos grifados nos requisitos (seção 2) e nos casos de uso (seção 3), filtrados pelas heurísticas da aula:
 
@@ -27,20 +27,20 @@ Substantivos grifados nos requisitos (seção 2) e nos casos de uso (seção 3),
 | Limite de requisições | Classe (`ControleRequisicoes`) | Guarda contagem por IP e fim da janela, e tem comportamento (`verificar()`) |
 | Mensagem de erro | Descartado | É saída da interface, não um conceito do domínio |
 | Diagnóstico | Classe | Tem dados próprios (possui chave, chave válida, erro) |
-| OpenAI | Descartado na análise | É ator externo; vira a classe de fronteira `ServicoIA` no projeto (seção 5) |
+| OpenAI | Descartado na análise | É ator externo; vira a classe de fronteira `ServicoIA` no projeto (seção 4) |
 | Navegador | Descartado | Fora do escopo — é o ambiente de execução |
 | Caractere | Descartado | É apenas a unidade de medida do contador |
 
 > **Sinônimos tratados:** "favorito" e "preset" são o mesmo conceito (usamos **Favorito**); "fala", "síntese"
 > e "áudio gerado" foram separados em `SolicitacaoFala` (o pedido) e `Audio` (o resultado).
 
-## 4.2 Diagrama de classes de análise
+## A.2 Diagrama de classes de análise
 
 ![Diagrama de classes de análise](diagramas/classes-analise.svg)
 
 Arquivo editável no Draw.io: [`diagramas/classes-analise.drawio`](diagramas/classes-analise.drawio)
 
-## 4.3 Leitura das associações
+## A.3 Leitura das associações
 
 | Associação | Multiplicidade | Leitura |
 | --- | --- | --- |

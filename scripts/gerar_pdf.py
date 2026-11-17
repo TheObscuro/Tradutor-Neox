@@ -35,13 +35,15 @@ AUTOR = os.environ.get("DOC_AUTOR", "Vitor Manoel")
 INSTITUICAO = os.environ.get("DOC_INSTITUICAO", "")
 PROFESSOR = os.environ.get("DOC_PROFESSOR", "")
 
+# Ordem exigida pelo trabalho pratico: descricao, requisitos, casos de uso,
+# diagrama de classes de projeto e repositorio. As classes de analise ficam em apendice.
 SECOES = [
-    "01-visao-geral.md",
+    "01-descricao-do-projeto.md",
     "02-requisitos.md",
     "03-casos-de-uso.md",
-    "04-classes-de-analise.md",
-    "05-diagrama-de-classes.md",
-    "06-versionamento.md",
+    "04-diagrama-de-classes.md",
+    "05-repositorio.md",
+    "apendice-a-classes-de-analise.md",
 ]
 
 MESES = ["janeiro", "fevereiro", "março", "abril", "maio", "junho", "julho",
