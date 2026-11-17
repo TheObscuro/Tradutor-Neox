@@ -13,6 +13,14 @@ import {
 import { playBlobWithEmotion, stopEmotionPlayback } from "@/lib/audio";
 import { addPreset, loadPresets, savePresets, validatePresetName, type Preset } from "@/lib/presets";
 
+
+import {
+  addTranslationHistory,
+  loadTranslationHistory,
+  type TranslationRecord,
+} from "@/lib/translation-history";
+
+
 async function readError(resp: Response, fallback: string) {
   try {
     const data = await resp.json();
@@ -45,10 +53,12 @@ export default function Page() {
   const [speed, setSpeed] = useState(1);
   const [voices, setVoices] = useState<Voice[]>([]);
   const [presets, setPresets] = useState<Preset[]>([]);
+  const [history, setHistory] = useState<TranslationRecord[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [voiceOpen, setVoiceOpen] = useState(false);
   const [presetsOpen, setPresetsOpen] = useState(false);
+  const [historyOpen, setHistoryOpen] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const lastFocus = useRef<HTMLElement | null>(null);
 
@@ -64,6 +74,9 @@ export default function Page() {
   useEffect(() => {
     setPresets(loadPresets());
   }, []);
+  useEffect(() => {
+    setHistory(loadTranslationHistory());
+  }, []);
 
   // RNF-05: ESC fecha as janelas e devolve o foco
   useEffect(() => {
@@ -71,6 +84,7 @@ export default function Page() {
       if (e.key !== "Escape") return;
       setVoiceOpen(false);
       setPresetsOpen(false);
+      setHistoryOpen(false);
       lastFocus.current?.focus();
     };
     window.addEventListener("keydown", onEsc);
@@ -119,9 +133,32 @@ export default function Page() {
           body: JSON.stringify({ text, targetLanguage, personality })
         });
         if (!tr.ok) throw new Error(await readError(tr, "Falha ao traduzir."));
-        const data = await tr.json();
-        textToSpeak = data.translated || text;
-        setTranslated(textToSpeak);
+        
+const data = await tr.json();
+
+const result =
+  typeof data.translated === "string"
+    ? data.translated.trim()
+    : "";
+
+if (!result) {
+  throw new Error("A tradução não retornou um texto válido.");
+}
+
+textToSpeak = result;
+setTranslated(textToSpeak);
+
+const record: TranslationRecord = {
+  id: crypto.randomUUID(),
+  sourceText: text,
+  translatedText: textToSpeak,
+  sourceLanguage: "auto",
+  targetLanguage,
+  createdAt: new Date().toISOString(),
+};
+
+setHistory(addTranslationHistory(record));
+
       }
       await playBlob(await requestSpeech(textToSpeak, voice));
     } catch (e: any) {
@@ -260,9 +297,16 @@ export default function Page() {
       </div>
 
       <div className="field row">
-        <button onClick={handleSavePreset}>Salvar como favorito</button>
-        <button onClick={() => openModal(setPresetsOpen)}>Favoritos ({presets.length})</button>
-      </div>
+          <button onClick={handleSavePreset}>
+            Salvar como favorito
+          </button>
+            <button onClick={() => openModal(setPresetsOpen)}>
+              Favoritos ({presets.length})
+          </button>
+           <button onClick={() => openModal(setHistoryOpen)}>
+              Histórico ({history.length})
+          </button>
+        </div>
 
       {error && <div className="error" role="alert">{error}</div>}
 
@@ -329,6 +373,58 @@ export default function Page() {
           </div>
         </div>
       )}
+    
+      {/* Modal do histórico de traduções */}
+      {historyOpen && (
+        <div
+          className="overlay"
+          onClick={(e) => {
+            if (e.target === e.currentTarget) {
+              setHistoryOpen(false);
+            }
+          }}
+        >
+          <div
+            className="modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="historyTitle"
+          >
+            <header>
+              <h2 id="historyTitle">
+                Histórico de traduções
+              </h2>
+
+              <button onClick={() => setHistoryOpen(false)}>
+                Fechar
+              </button>
+            </header>
+
+            <div className="cards">
+              {history.length === 0 ? (
+                <div className="card">
+                  <p>Nenhuma tradução registrada ainda.</p>
+                </div>
+              ) : (
+                history.map((record) => (
+                  <div key={record.id} className="card">
+                    <p>
+                      <strong>Original:</strong>{" "}
+                      {record.sourceText}
+                    </p>
+
+                    <p>
+                      <strong>Tradução:</strong>{" "}
+                      {record.translatedText}
+                    </p>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
     </main>
   );
 }

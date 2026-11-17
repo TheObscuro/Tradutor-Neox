@@ -44,3 +44,18 @@ export function clearTranslationHistory(): void {
   }
 }
   
+
+export function addTranslationHistory(
+  record: TranslationRecord
+): TranslationRecord[] {
+  const history = loadTranslationHistory();
+
+  const updated = [
+    record,
+    ...history.filter((item) => item.id !== record.id),
+  ].slice(0, MAX_HISTORY_ITEMS);
+
+  saveTranslationHistory(updated);
+
+  return updated;
+}
