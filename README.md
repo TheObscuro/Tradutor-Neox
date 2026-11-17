@@ -19,7 +19,10 @@ Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
 - Personalidade aplicada ao tom da tradução
 - Favoritos salvos no navegador
 - Limite de requisições por IP e rota de diagnóstico da chave da API
+ 
+## Pré-requisitos
 
+Para executar o projeto localmente, é necessário ter o Node.js e o npm instalados, além de uma chave de API da OpenAI configurada no ambiente.
 ## Como executar
 
 1. Instale as dependências:
