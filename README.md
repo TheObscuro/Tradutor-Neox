@@ -27,6 +27,7 @@ Para executar o projeto localmente, são necessários:
 - Node.js 18.18 ou superior
 - npm para gerenciamento de dependências
 - Chave de API da OpenAI configurada no ambiente
+
 ## Como executar
 
 1. Instale as dependências:
@@ -46,6 +47,15 @@ Para executar o projeto localmente, são necessários:
    ```bash
    npm run dev
    ```
+## Execução em produção
+
+Para gerar a versão de produção:
+
+npm run build
+
+Para iniciar a aplicação:
+
+npm run start
 
 ## Rotas da API
 
