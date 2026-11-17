@@ -7,7 +7,7 @@ Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
 
 | | |
 | --- | --- |
-| **Integrante** | Vitor Manoel |
+| **Integrantes** | Vitor Manoel Rafael Rodrigues e Giovany Mateus Barbosa |
 | **Repositório** | https://github.com/TheObscuro/Tradutor-Neox |
 | **Documentação** | [`docs/Documentacao-Tradutor-Neox.pdf`](docs/Documentacao-Tradutor-Neox.pdf) |
 

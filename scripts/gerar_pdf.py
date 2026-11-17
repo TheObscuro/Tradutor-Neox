@@ -31,7 +31,7 @@ PDF_OUT = os.path.join(DOCS, "Documentacao-Tradutor-Neox.pdf")
 TITULO = "Tradutor Neox"
 SUBTITULO = "Documentação de Análise e Projeto de Sistemas"
 DISCIPLINA = "Análise e Projeto de Sistemas"
-AUTOR = os.environ.get("DOC_AUTOR", "Vitor Manoel")
+INTEGRANTES = ["Vitor Manoel Rafael Rodrigues", "Giovany Mateus Barbosa"]
 INSTITUICAO = os.environ.get("DOC_INSTITUICAO", "")
 PROFESSOR = os.environ.get("DOC_PROFESSOR", "")
 REPOSITORIO = "https://github.com/TheObscuro/Tradutor-Neox"
@@ -120,12 +120,13 @@ def montar_html() -> str:
     )
     extra = f"<div>{INSTITUICAO}</div>" if INSTITUICAO else ""
     prof = f"<div>Professor(a): {PROFESSOR}</div>" if PROFESSOR else ""
+    integrantes = "".join(f"<div><b>{n}</b></div>" for n in INTEGRANTES)
     capa = f"""
 <div class="capa">
   <div class="topo">{extra}</div>
   <div class="meio"><h1>{TITULO}</h1><p>{SUBTITULO}</p></div>
   <div class="base">
-    <div>Integrante: <b>{AUTOR}</b></div>{prof}
+    <div>Integrantes:</div>{integrantes}{prof}
     <div>Disciplina: {DISCIPLINA}</div>
     <div>{data}</div>
     <div class="repo">Repositório: <a href="{REPOSITORIO}">{REPOSITORIO}</a></div>
