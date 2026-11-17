@@ -84,17 +84,17 @@ git status                              # 1. repositorio limpo
 git switch -c docs/requisitos           # 2. cria a branch da tarefa
 git add docs/02-requisitos.md           # 3. commits pequenos e semanticos
 git commit -m "docs: adiciona requisitos funcionais, nao funcionais e regras de negocio"
-git switch claude/inspiring-faraday-wec0ca   # 4. volta para a branch de integracao
+git switch Branch-top                   # 4. volta para a branch de integracao
 git merge --no-ff docs/requisitos       #    e integra a tarefa
 git branch -d docs/requisitos           # 5. exclui a branch ja integrada
-git push origin claude/inspiring-faraday-wec0ca
+git push origin Branch-top
 ```
 
 O `--no-ff` força a criação do commit de merge mesmo quando seria possível um *fast-forward*, para que o
 grafo mostre claramente onde cada tarefa começou e terminou.
 
 A branch de integração é publicada no GitHub e entra na `main` por **pull request**
-([TheObscuro/Tradutor-Neox#1](https://github.com/TheObscuro/Tradutor-Neox/pull/1)), o que permite revisar
+([TheObscuro/Tradutor-Neox#2](https://github.com/TheObscuro/Tradutor-Neox/pull/2)), o que permite revisar
 o código antes de integrá-lo e gera automaticamente uma prévia do site na Vercel.
 
 ### Grafo do histórico
