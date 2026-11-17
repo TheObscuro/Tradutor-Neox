@@ -72,6 +72,10 @@ Cada tarefa é desenvolvida em uma branch própria, com o tipo do commit como pr
 | `docs/casos-de-uso` | Gerador de diagramas, diagrama e documentação dos casos de uso |
 | `docs/diagrama-de-classes` | Classes de análise e de projeto |
 | `docs/versionamento-e-pdf` | Esta seção e a geração do PDF |
+| `docs/descricao-do-projeto` | Contexto, objetivo e escopo; reorganização na ordem do trabalho prático; capa com link do repositório |
+| `fix/diagrama-de-classes` | Multiplicidade em todos os relacionamentos do diagrama de classes de projeto |
+| `docs/readme-entrega` | Integrante, link do repositório e funcionalidades no README |
+| `docs/pdf-entrega` | Versão final do PDF para entrega |
 
 ### Fluxo usado em cada tarefa
 
@@ -98,6 +102,28 @@ o código antes de integrá-lo e gera automaticamente uma prévia do site na Ver
 Trecho de `git log --oneline --graph`:
 
 ```
+*   Merge branch 'docs/readme-entrega'
+|\
+| * docs(readme): adiciona integrante, link do repositorio e funcionalidades
+|/
+*   Merge branch 'fix/diagrama-de-classes'
+|\
+| * fix(uml): troca dependencias por associacoes com multiplicidade
+|/
+*   Merge branch 'docs/descricao-do-projeto'
+|\
+| * docs(pdf): inclui link do repositorio e disciplina na capa
+| * docs: reorganiza secoes na ordem pedida pelo trabalho pratico
+| * docs: detalha contexto, objetivo e escopo do projeto
+|/
+*   Merge branch 'docs/versionamento-e-pdf'
+|\
+| * docs(readme): adiciona indice da documentacao e instrucoes do PDF
+| * docs: adiciona documentacao completa em PDF
+| * chore(scripts): adiciona gerador do PDF da documentacao
+| * docs(requisitos): separa codigo, nome e descricao em linhas proprias
+| * docs: adiciona secao de versionamento com git
+|/
 *   Merge branch 'docs/diagrama-de-classes'
 |\
 | * docs: documenta classes de projeto e seus relacionamentos

@@ -79,7 +79,7 @@ section.secao { break-before: page; }
 .capa .repo { margin-top: 10px; font-size: 12pt; }
 .sumario { break-before: page; }
 .sumario ol { font-size: 12pt; line-height: 2; }
-.sumario ol ol { font-size: 10.5pt; line-height: 1.6; }
+.sumario ol ol { font-size: 10.5pt; line-height: 1.6; list-style: none; padding-left: 18px; }
 """
 
 
