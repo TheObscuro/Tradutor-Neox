@@ -22,7 +22,11 @@ Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
  
 ## Pré-requisitos
 
-Para executar o projeto localmente, é necessário ter o Node.js e o npm instalados, além de uma chave de API da OpenAI configurada no ambiente.
+Para executar o projeto localmente, são necessários:
+
+- Node.js 18.18 ou superior
+- npm para gerenciamento de dependências
+- Chave de API da OpenAI configurada no ambiente
 ## Como executar
 
 1. Instale as dependências:
