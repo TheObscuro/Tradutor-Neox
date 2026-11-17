@@ -5,6 +5,21 @@ permitindo escolher idioma, voz, emoção e personalidade.
 
 Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
 
+| | |
+| --- | --- |
+| **Integrante** | Vitor Manoel |
+| **Repositório** | https://github.com/TheObscuro/Tradutor-Neox |
+| **Documentação** | [`docs/Documentacao-Tradutor-Neox.pdf`](docs/Documentacao-Tradutor-Neox.pdf) |
+
+## Funcionalidades
+
+- Tradução de textos de até 1000 caracteres para 25 idiomas
+- Síntese de voz com 6 vozes e prévia de cada uma
+- Emoções na fala (neutro, feliz, triste, sereno, energético) e controle de velocidade
+- Personalidade aplicada ao tom da tradução
+- Favoritos salvos no navegador
+- Limite de requisições por IP e rota de diagnóstico da chave da API
+
 ## Como executar
 
 1. Instale as dependências:
