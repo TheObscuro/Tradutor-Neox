@@ -90,9 +90,10 @@ Arquivo editável no Draw.io: [`diagramas/classes-projeto.drawio`](diagramas/cla
 | `SolicitacaoFala` — `ConfiguracaoFala` | **Associação** (`0..*` — `1`) | A solicitação usa a configuração atual, sem ser parte dela |
 | `ControleRequisicoes` — `SolicitacaoFala` | **Associação** (`1` — `0..*`) | O controle de um IP limita as solicitações feitas por ele |
 | `Traducao` entre `SolicitacaoFala` e `Idioma` | **Classe associativa** | `textoTraduzido` e `personalidade` não pertencem nem só à solicitação nem só ao idioma: existem na relação entre os dois |
-| `SolicitacaoFala` ⇢ `ServicoTraducao` | **Dependência** | Vínculo temporário: o serviço é usado durante `executar()` |
-| `ServicoTraducao` ⇢ `Traducao`, `ServicoSintese` ⇢ `Audio` | **Dependência** | Os serviços criam esses objetos como retorno dos métodos |
-| `Diagnostico` ⇢ `ServicoIA` | **Dependência** | Usa `verificarChave()` durante `executar()` |
+| `SolicitacaoFala` — `ServicoTraducao` | **Associação** (`0..*` — `1`) | "Solicita": todas as solicitações com tradução são atendidas pelo mesmo serviço |
+| `ServicoTraducao` — `Traducao` | **Associação** (`1` — `0..*`) | "Gera": cada tradução é produzida por um serviço; o serviço gera várias traduções |
+| `ServicoSintese` — `Audio` | **Associação** (`1` — `0..*`) | "Gera": cada áudio é produzido por um serviço; o serviço gera vários áudios |
+| `Diagnostico` — `ServicoIA` | **Associação** (`0..*` — `1`) | "Verifica": o diagnóstico usa `verificarChave()` do serviço |
 
 ## 4.5 Checklist de refinamento
 
@@ -100,7 +101,7 @@ Arquivo editável no Draw.io: [`diagramas/classes-projeto.drawio`](diagramas/cla
 | --- | --- |
 | **Dinâmico** | Todo caso de uso tem classes que o suportam: UC01 → `SolicitacaoFala`/`ServicoSintese`/`Audio`; UC02/UC03 → `ServicoTraducao`/`Traducao`; UC04 → `Emocao`; UC05/UC06 → `Voz`; UC07 → `ConfiguracaoFala`; UC08–UC10 → `ListaFavoritos`/`Favorito`; UC11 → `Diagnostico`; UC13 → `ControleRequisicoes` |
 | **Estático** | Todos os atributos têm tipo e visibilidade; constantes marcadas com `{readOnly}` |
-| **Estrutural** | Toda associação tem multiplicidade nas duas pontas; não há classes soltas sem relação |
+| **Estrutural** | Toda associação, agregação e composição tem multiplicidade nas duas pontas (generalizações não levam multiplicidade, conforme a UML); não há classes soltas sem relação |
 | **Nomenclatura** | Classes no singular em PascalCase; atributos e métodos em camelCase; métodos com verbo |
 | **Duplicidade** | "Preset" e "Favorito" unificados; `idioma` deixou de ser atributo repetido em duas classes e virou a classe `Idioma` |
 

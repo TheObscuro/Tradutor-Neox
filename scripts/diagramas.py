@@ -424,11 +424,11 @@ def classes_projeto() -> Diagram:
         Edge("sol", "audio", "comp", "", "1", "1"),
         Edge("st", "ia", "general"),
         Edge("ss", "ia", "general"),
-        Edge("sol", "st", "dep", "usa"),
+        Edge("sol", "st", "assoc", "solicita", "0..*", "1"),
         Edge("lim", "sol", "assoc", "limita", "1", "0..*"),
-        Edge("diag", "ia", "dep", "verifica"),
-        Edge("ss", "audio", "dep", "cria"),
-        Edge("st", "trad", "dep", "cria"),
+        Edge("diag", "ia", "assoc", "verifica", "0..*", "1"),
+        Edge("ss", "audio", "assoc", "gera", "1", "0..*"),
+        Edge("st", "trad", "assoc", "gera", "1", "0..*"),
     ]
     return Diagram("classes-projeto", 1200, 1440, nodes, edges)
 

@@ -87,13 +87,21 @@
         <mxCell id="e8_t" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e8"><mxGeometry x="0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
         <mxCell id="e9" value="" style="endArrow=block;endFill=0;html=1;endSize=14;" edge="1" parent="1" source="st" target="ia"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="e10" value="" style="endArrow=block;endFill=0;html=1;endSize=14;" edge="1" parent="1" source="ss" target="ia"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e11" value="usa" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="sol" target="st"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11" value="solicita" style="endArrow=none;html=1;" edge="1" parent="1" source="sol" target="st"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e11_s" value="0..*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e11"><mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
+        <mxCell id="e11_t" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e11"><mxGeometry x="0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
         <mxCell id="e12" value="limita" style="endArrow=none;html=1;" edge="1" parent="1" source="lim" target="sol"><mxGeometry relative="1" as="geometry"/></mxCell>
         <mxCell id="e12_s" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e12"><mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
         <mxCell id="e12_t" value="0..*" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e12"><mxGeometry x="0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
-        <mxCell id="e13" value="verifica" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="diag" target="ia"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e14" value="cria" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="ss" target="audio"><mxGeometry relative="1" as="geometry"/></mxCell>
-        <mxCell id="e15" value="cria" style="endArrow=open;dashed=1;html=1;endSize=10;" edge="1" parent="1" source="st" target="trad"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13" value="verifica" style="endArrow=none;html=1;" edge="1" parent="1" source="diag" target="ia"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e13_s" value="0..*" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e13"><mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
+        <mxCell id="e13_t" value="1" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e13"><mxGeometry x="0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
+        <mxCell id="e14" value="gera" style="endArrow=none;html=1;" edge="1" parent="1" source="ss" target="audio"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e14_s" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e14"><mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
+        <mxCell id="e14_t" value="0..*" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e14"><mxGeometry x="0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
+        <mxCell id="e15" value="gera" style="endArrow=none;html=1;" edge="1" parent="1" source="st" target="trad"><mxGeometry relative="1" as="geometry"/></mxCell>
+        <mxCell id="e15_s" value="1" style="edgeLabel;resizable=0;html=1;align=left;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e15"><mxGeometry x="-0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
+        <mxCell id="e15_t" value="0..*" style="edgeLabel;resizable=0;html=1;align=right;verticalAlign=bottom;fontStyle=1;" vertex="1" connectable="0" parent="e15"><mxGeometry x="0.8" relative="1" as="geometry"><mxPoint as="offset"/></mxGeometry></mxCell>
       </root>
     </mxGraphModel>
   </diagram>
