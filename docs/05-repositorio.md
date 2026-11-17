@@ -11,7 +11,7 @@ versionados com Git, atendendo ao RNF-10.
 | `lib/` | Regras compartilhadas: constantes, limite de requisições, áudio e favoritos |
 | `docs/` | Documentação em Markdown, este PDF e os diagramas (`docs/diagramas/`) |
 | `scripts/` | Geradores dos diagramas e do PDF |
-| `README.md` | Nome do projeto, integrante, descrição e como executar |
+| `README.md` | Nome do projeto, integrantes, descrição e como executar |
 
 ## 5.1 Configuração
 
