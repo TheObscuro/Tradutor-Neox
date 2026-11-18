@@ -27,4 +27,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 docs/documentacao.html
-tsconfig.tsbuildinfo
+
+# TypeScript
+*.tsbuildinfo
