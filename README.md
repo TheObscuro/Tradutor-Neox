@@ -28,7 +28,7 @@ Projeto desenvolvido para a disciplina de **Análise e Projeto de Sistemas**.
    npm install
    ```
 
-2. Crie o arquivo `.env.local` na raiz com a sua chave da OpenAI:
+2. Copie o `.env.example` para `.env.local` e preencha com a sua chave da OpenAI (o `.env.local` não é versionado):
 
    ```
    OPENAI_API_KEY=sk-...
